@@ -1,0 +1,10 @@
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.csproj.AssemblyReference.cache
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.Form1.resources
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.Properties.Resources.resources
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.csproj.GenerateResource.cache
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.csproj.CoreCompileInputs.cache
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\bin\Debug\OS_proj.exe.config
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\bin\Debug\OS_proj.exe
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\bin\Debug\OS_proj.pdb
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.exe
+C:\Users\Zanatii\source\repos\OS_proj\OS_proj\obj\Debug\OS_proj.pdb
