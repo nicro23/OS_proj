@@ -20,6 +20,7 @@ namespace OS_proj
     {
         Label P_label, BT, AT, Prio, WT, TA, Algo, quantum;
         TextBox quantum_box;
+        CheckBox priority;
         ComboBox Algo_box;
         Button b, calc;
         RadioButton pre, non_pre;
@@ -31,6 +32,7 @@ namespace OS_proj
             this.Paint += Form1_Paint;
             this.Load += Form1_Load;
             pl = new List<process>();
+            priority = new CheckBox();
             pre = new RadioButton();
             non_pre = new RadioButton();
             Algo_box = new ComboBox();
@@ -47,24 +49,10 @@ namespace OS_proj
                     pre.Enabled = false;
                     pre.Checked = false;
 
-                    if (pl[0].Prio.ReadOnly == false)
-                    {
-                        for (int i = 0; i < pl.Count; i++)
-                        {
-                            pl[i].Prio.ReadOnly = true;
-                        }
-                    }
                     quantum_box.ReadOnly = true;
                     break;
                 case "Shortest Job First":
 
-                    if (pl[0].Prio.ReadOnly == false)
-                    {
-                        for (int i = 0; i < pl.Count; i++)
-                        {
-                            pl[i].Prio.ReadOnly = true;
-                        }
-                    }
                     quantum_box.ReadOnly = true;
                     non_pre.Enabled = true;
                     pre.Enabled = true;
@@ -76,23 +64,6 @@ namespace OS_proj
                     pre.Enabled = false;
                     pre.Checked = true;
 
-                    if (pl[0].Prio.ReadOnly == false)
-                    {
-                        for (int i = 0; i < pl.Count; i++)
-                        {
-                            pl[i].Prio.ReadOnly = true;
-                        }
-                    }
-                    break;
-                case "Priority":
-                    for (int i = 0; i < pl.Count; i++)
-                    {
-                        pl[i].Prio.ReadOnly = false;
-                    }
-
-                    quantum_box.ReadOnly = true; 
-                    non_pre.Enabled = true;
-                    pre.Enabled = true;
                     break;
 
             }
@@ -165,32 +136,36 @@ namespace OS_proj
 
             Algo_box.SelectedIndexChanged += Algo_box_SelectedIndexChanged;
 
-
+            //add checkbox
+            priority.Text = "Priority";
+            priority.Location = new Point(465, 70);
+            priority.CheckedChanged += Priority_CheckedChanged;
+            Controls.Add(priority);
             //add radio_buttons
             pre.Text = "Preemptive";
-            pre.Location = new Point(465, 75);
+            pre.Location = new Point(465, 90);
             Controls.Add(pre);
             non_pre.Text = "Non-Preemptive";
-            non_pre.Location = new Point(465, 95);
+            non_pre.Location = new Point(465, 110);
             Controls.Add(non_pre);
 
             //quantum input 
             quantum = new Label();
             quantum.Text = "Quantum: ";
             quantum.AutoSize = true;
-            quantum.Location = new Point(465, 120);
+            quantum.Location = new Point(465, 135);
             Controls.Add(quantum);
 
             quantum_box = new TextBox();
             quantum_box.ReadOnly = true;
             quantum_box.Size = new Size(quantum.Width, quantum.Height);
-            quantum_box.Location = new Point(465, 140);
+            quantum_box.Location = new Point(465, 150);
             Controls.Add(quantum_box);
 
             //create buttons
             b = new Button();
             b.Text = "New process";
-            b.Location = new Point(465, 170);
+            b.Location = new Point(465, 180);
             b.Size = new Size(90, 25);
             //b.AutoSize = true;
             b.Click += B_Click;
@@ -198,13 +173,31 @@ namespace OS_proj
 
             calc = new Button();
             calc.Text = "Calculate";
-            calc.Location = new Point(465, 200);
+            calc.Location = new Point(465, 210);
             calc.AutoSize = true;
             calc.Click += Calc_Click;
             Controls.Add(calc);
             //add first process
             add_process(process_i, 35, 45, margin, section_margin);
             process_i++;
+        }
+
+        private void Priority_CheckedChanged(object sender, EventArgs e)
+        {
+            if(priority.CheckState == CheckState.Checked)
+            {
+                for (int i = 0; i < pl.Count; i++)
+                {
+                    pl[i].Prio.ReadOnly = false;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < pl.Count; i++)
+                {
+                    pl[i].Prio.ReadOnly = true;
+                }
+            }
         }
 
         private void Calc_Click(object sender, EventArgs e)
@@ -221,10 +214,6 @@ namespace OS_proj
 
                 case "Round Robin":
                     //always preemptive
-                    break;
-
-                //will be changed to be a checkbox
-                case "Priority":
                     break;
             }
         }
