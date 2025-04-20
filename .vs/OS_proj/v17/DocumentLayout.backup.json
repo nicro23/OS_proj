@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|C:\\Users\\Zanatii\\source\\repos\\OS_proj\\os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|solutionrelative:os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|c:\\users\\zanatii\\source\\repos\\os_proj\\os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|solutionrelative:os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|c:\\users\\zanatii\\source\\repos\\os_proj\\os_proj\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|C:\\Users\\Zanatii\\source\\repos\\OS_proj\\os_proj\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|solutionrelative:os_proj\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|c:\\users\\zanatii\\source\\repos\\os_proj\\os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|solutionrelative:os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,37 +22,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "OS_proj\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.Designer.cs",
               "RelativeToolTip": "OS_proj\\Form1.Designer.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAlwA4AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAADwvzsAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T22:22:14.627Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
               "RelativeDocumentMoniker": "OS_proj\\Form1.cs",
               "ToolTip": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
               "RelativeToolTip": "OS_proj\\Form1.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAADgAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAACgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T22:19:26.39Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
               "RelativeDocumentMoniker": "OS_proj\\Form1.cs",
