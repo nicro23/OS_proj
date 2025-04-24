@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -184,24 +184,20 @@ namespace OS_proj
 
         private void Priority_CheckedChanged(object sender, EventArgs e)
         {
-            if(priority.CheckState == CheckState.Checked)
+            for (int i = 0; i < pl.Count; i++)
             {
-                for (int i = 0; i < pl.Count; i++)
-                {
-                    pl[i].Prio.ReadOnly = false;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < pl.Count; i++)
-                {
-                    pl[i].Prio.ReadOnly = true;
-                }
+                pl[i].Prio.ReadOnly = !priority.Checked;
             }
         }
 
         private void Calc_Click(object sender, EventArgs e)
         {
+            if (Algo_box.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a scheduling algorithm first.");
+                return;
+            }
+
             switch (Algo_box.Items[Algo_box.SelectedIndex].ToString())
             {
                 case "First Come First Served":
@@ -209,12 +205,78 @@ namespace OS_proj
                     break;
 
                 case "Shortest Job First":
-
+                    SJF_Algo();
                     break;
 
                 case "Round Robin":
                     //always preemptive
                     break;
+            }
+        }
+
+        private void SJF_Algo()
+        {
+            List<ProcessData> processes = new List<ProcessData>();
+
+            for (int i = 0; i < pl.Count; i++)
+            {
+                int prio = priority.Checked ? int.Parse(pl[i].Prio.Text) : 0;
+                processes.Add(new ProcessData(pl[i], prio));
+            }
+            
+            int time = 0;
+            while (processes.Count > 0)
+            {
+                int rj_burst = -1;
+                int rj_prio = -1;
+                int rj_idx = -1;
+                for (int i = 0; i < processes.Count; i++)
+                {
+                   int arrival = processes[i].arrival;
+                   int burst = processes[i].burst;
+                   int prio = processes[i].priority;
+          
+                    if (arrival <= time && (rj_burst == -1 || burst < rj_burst))
+                    {
+                     if (rj_burst == -1 || !priority.Checked || prio < rj_prio) {
+                      rj_burst = burst;
+                      rj_prio = prio;
+                      rj_idx = i;
+                     }
+                    }
+                }
+          
+                ProcessData running_job = processes[rj_idx];
+                ProcessData nsj = null; // nsj = next shortest job
+                for (int i = 0; (pre.Checked || priority.Checked) && i < processes.Count; i++)
+                {
+                    int arrival = processes[i].arrival;
+                    int burst = processes[i].burst;
+                    int prio = processes[i].priority;
+
+                    if (arrival > time
+                        && running_job.burst - (arrival - time) > burst
+                        && (nsj == null || (arrival < nsj.arrival && burst < nsj.burst)))
+                    {
+                     if (nsj == null || !priority.Checked || prio < nsj.priority)
+                     {
+                      nsj = processes[i];
+                     }
+                    }
+                }
+
+                int time_inc = nsj != null ? nsj.arrival - time : running_job.burst;
+                running_job.burst -= time_inc;
+                time += time_inc;
+
+                if (running_job.burst == 0)
+                {
+                    running_job.turn_around = time - running_job.arrival;
+                    running_job.waiting = running_job.turn_around - running_job.original_burst;
+
+                    running_job.WriteBack();
+                    processes.RemoveAt(rj_idx);
+                }
             }
         }
 
@@ -303,5 +365,26 @@ namespace OS_proj
             WT = new TextBox();
             TA = new TextBox();
         }
+    }
+
+    public class ProcessData {
+     process process;
+     public int arrival, burst, priority, original_burst;
+     public int waiting, turn_around;
+
+     public ProcessData(process process, int priority) { 
+      this.process = process;
+      arrival = int.Parse(process.AT.Text);
+      burst = int.Parse(process.BT.Text);
+      original_burst = int.Parse(process.BT.Text);
+      this.priority = priority;
+      waiting = 0;
+      turn_around = 0;
+     }
+
+     public void WriteBack() { 
+      process.WT.Text = waiting.ToString();
+      process.TA.Text = turn_around.ToString();
+     }
     }
 }
