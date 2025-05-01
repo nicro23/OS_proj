@@ -16,7 +16,7 @@ namespace OS_proj
      * 3. make a best algo button that calcualtes the best algorithm
      * 4. draw a grant chart when the user presses calculate
      */
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         Label P_label, BT, AT, Prio, WT, TA, Algo, quantum;
         TextBox quantum_box;
@@ -27,6 +27,7 @@ namespace OS_proj
         List<process> pl;
         process p;
         int process_i;
+        float zturnavg, zwaitavg;
         public Form1()
         {
             this.Paint += Form1_Paint;
@@ -48,7 +49,6 @@ namespace OS_proj
                     non_pre.Checked = true;
                     pre.Enabled = false;
                     pre.Checked = false;
-
                     quantum_box.ReadOnly = true;
                     break;
                 case "Shortest Job First":
@@ -69,7 +69,7 @@ namespace OS_proj
             }
         }
 
-        private void create_headers(int x_start,int y, int margin,int section_margin)
+        private void create_headers(int x_start, int y, int margin, int section_margin)
         {
             Label P_label = new Label();
             P_label.Text = "Process";
@@ -82,7 +82,7 @@ namespace OS_proj
             BT.AutoSize = true;
             BT.Location = new Point(x_start + margin, y);
             Controls.Add(BT);
-            x_start += BT.Width + margin; 
+            x_start += BT.Width + margin;
             AT = new Label();
             AT.Text = "Arrival time";
             AT.AutoSize = true;
@@ -201,7 +201,8 @@ namespace OS_proj
             switch (Algo_box.Items[Algo_box.SelectedIndex].ToString())
             {
                 case "First Come First Served":
-                //always non-preemptive
+                    //always non-preemptive
+                    FCFS_Algo();
                     break;
 
                 case "Shortest Job First":
@@ -214,6 +215,38 @@ namespace OS_proj
             }
         }
 
+
+        private void FCFS_Algo()
+        {
+            List<ProcessData> processes = new List<ProcessData>();
+
+            for (int i = 0; i < pl.Count; i++)
+            {
+                processes.Add(new ProcessData(pl[i], 0));
+            }
+
+            processes = processes.OrderBy(p => p.arrival).ToList();
+
+            int time = 0;
+            for (int i = 0; i < processes.Count; i++)
+            {
+
+                if (time < processes[i].arrival)
+                {
+                    time = processes[i].arrival;
+                }
+
+                processes[i].waiting = time - processes[i].arrival;
+                time += processes[i].burst;
+                processes[i].turn_around = processes[i].waiting + processes[i].burst;
+                zwaitavg += processes[i].waiting;
+                zturnavg += processes[i].turn_around;
+                processes[i].WriteBack();
+            }
+            MessageBox.Show("Avgwait=" + zwaitavg / processes.Count + "," + "Avgturn=" + zturnavg / processes.Count);
+        }
+
+
         private void SJF_Algo()
         {
             List<ProcessData> processes = new List<ProcessData>();
@@ -223,7 +256,7 @@ namespace OS_proj
                 int prio = priority.Checked ? int.Parse(pl[i].Prio.Text) : 0;
                 processes.Add(new ProcessData(pl[i], prio));
             }
-            
+
             int time = 0;
             while (processes.Count > 0)
             {
@@ -232,20 +265,21 @@ namespace OS_proj
                 int rj_idx = -1;
                 for (int i = 0; i < processes.Count; i++)
                 {
-                   int arrival = processes[i].arrival;
-                   int burst = processes[i].burst;
-                   int prio = processes[i].priority;
-          
+                    int arrival = processes[i].arrival;
+                    int burst = processes[i].burst;
+                    int prio = processes[i].priority;
+
                     if (arrival <= time && (rj_burst == -1 || burst < rj_burst))
                     {
-                     if (rj_burst == -1 || !priority.Checked || prio < rj_prio) {
-                      rj_burst = burst;
-                      rj_prio = prio;
-                      rj_idx = i;
-                     }
+                        if (rj_burst == -1 || !priority.Checked || prio < rj_prio)
+                        {
+                            rj_burst = burst;
+                            rj_prio = prio;
+                            rj_idx = i;
+                        }
                     }
                 }
-          
+
                 ProcessData running_job = processes[rj_idx];
                 ProcessData nsj = null; // nsj = next shortest job
                 for (int i = 0; (pre.Checked || priority.Checked) && i < processes.Count; i++)
@@ -258,10 +292,10 @@ namespace OS_proj
                         && running_job.burst - (arrival - time) > burst
                         && (nsj == null || (arrival < nsj.arrival && burst < nsj.burst)))
                     {
-                     if (nsj == null || !priority.Checked || prio < nsj.priority)
-                     {
-                      nsj = processes[i];
-                     }
+                        if (nsj == null || !priority.Checked || prio < nsj.priority)
+                        {
+                            nsj = processes[i];
+                        }
                     }
                 }
 
@@ -347,7 +381,7 @@ namespace OS_proj
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
     }
     public class process
@@ -367,24 +401,27 @@ namespace OS_proj
         }
     }
 
-    public class ProcessData {
-     process process;
-     public int arrival, burst, priority, original_burst;
-     public int waiting, turn_around;
+    public class ProcessData
+    {
+        process process;
+        public int arrival, burst, priority, original_burst;
+        public int waiting, turn_around;
 
-     public ProcessData(process process, int priority) { 
-      this.process = process;
-      arrival = int.Parse(process.AT.Text);
-      burst = int.Parse(process.BT.Text);
-      original_burst = int.Parse(process.BT.Text);
-      this.priority = priority;
-      waiting = 0;
-      turn_around = 0;
-     }
+        public ProcessData(process process, int priority)
+        {
+            this.process = process;
+            arrival = int.Parse(process.AT.Text);
+            burst = int.Parse(process.BT.Text);
+            original_burst = int.Parse(process.BT.Text);
+            this.priority = priority;
+            waiting = 0;
+            turn_around = 0;
+        }
 
-     public void WriteBack() { 
-      process.WT.Text = waiting.ToString();
-      process.TA.Text = turn_around.ToString();
-     }
+        public void WriteBack()
+        {
+            process.WT.Text = waiting.ToString();
+            process.TA.Text = turn_around.ToString();
+        }
     }
 }
