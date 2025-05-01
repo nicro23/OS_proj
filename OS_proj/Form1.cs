@@ -205,6 +205,7 @@ namespace OS_proj
                     break;
 
                 case "Shortest Job First":
+                    MessageBox.Show("error");
                     SJF_Algo();
                     break;
 
@@ -223,7 +224,7 @@ namespace OS_proj
                 int prio = priority.Checked ? int.Parse(pl[i].Prio.Text) : 0;
                 processes.Add(new ProcessData(pl[i], prio));
             }
-            
+
             int time = 0;
             while (processes.Count > 0)
             {
@@ -232,20 +233,21 @@ namespace OS_proj
                 int rj_idx = -1;
                 for (int i = 0; i < processes.Count; i++)
                 {
-                   int arrival = processes[i].arrival;
-                   int burst = processes[i].burst;
-                   int prio = processes[i].priority;
-          
+                    int arrival = processes[i].arrival;
+                    int burst = processes[i].burst;
+                    int prio = processes[i].priority;
+
                     if (arrival <= time && (rj_burst == -1 || burst < rj_burst))
                     {
-                     if (rj_burst == -1 || !priority.Checked || prio < rj_prio) {
-                      rj_burst = burst;
-                      rj_prio = prio;
-                      rj_idx = i;
-                     }
+                        if (rj_burst == -1 || !priority.Checked || prio < rj_prio)
+                        {
+                            rj_burst = burst;
+                            rj_prio = prio;
+                            rj_idx = i;
+                        }
                     }
                 }
-          
+
                 ProcessData running_job = processes[rj_idx];
                 ProcessData nsj = null; // nsj = next shortest job
                 for (int i = 0; (pre.Checked || priority.Checked) && i < processes.Count; i++)
@@ -258,10 +260,10 @@ namespace OS_proj
                         && running_job.burst - (arrival - time) > burst
                         && (nsj == null || (arrival < nsj.arrival && burst < nsj.burst)))
                     {
-                     if (nsj == null || !priority.Checked || prio < nsj.priority)
-                     {
-                      nsj = processes[i];
-                     }
+                        if (nsj == null || !priority.Checked || prio < nsj.priority)
+                        {
+                            nsj = processes[i];
+                        }
                     }
                 }
 
