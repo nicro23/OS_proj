@@ -13,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|C:\\Users\\moaster\\source\\repos\\OS_proj\\os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D577BD27-C6EE-4E6B-AF4C-E6B18D304A0A}|OS_proj\\OS_proj.csproj|solutionrelative:os_proj\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Test.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OS_proj\\Test.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,9 +34,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
               "RelativeDocumentMoniker": "OS_proj\\Form1.cs",
-              "ToolTip": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.cs*",
-              "RelativeToolTip": "OS_proj\\Form1.cs*",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAYwNAAAAAUAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
+              "RelativeToolTip": "OS_proj\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T22:19:26.39Z",
               "EditorCaption": ""
@@ -45,7 +49,7 @@
               "RelativeDocumentMoniker": "OS_proj\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.Designer.cs",
               "RelativeToolTip": "OS_proj\\Form1.Designer.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAADwvzsAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAgwAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T22:22:14.627Z"
             },
@@ -55,10 +59,22 @@
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.cs",
               "RelativeDocumentMoniker": "OS_proj\\Form1.cs",
-              "ToolTip": "C:\\Users\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\..\\Zanatii\\source\\repos\\OS_proj\\OS_proj\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Form1.cs [Design]",
+              "RelativeToolTip": "OS_proj\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T10:25:43.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Test.txt",
+              "DocumentMoniker": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Test.txt",
+              "RelativeDocumentMoniker": "OS_proj\\Test.txt",
+              "ToolTip": "C:\\Users\\moaster\\source\\repos\\OS_proj\\OS_proj\\Test.txt",
+              "RelativeToolTip": "OS_proj\\Test.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-01T14:35:51.517Z"
             }
           ]
         }
