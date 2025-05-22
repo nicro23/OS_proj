@@ -925,7 +925,7 @@ namespace OS_proj
             this.priority = priority;
             waiting = 0;
             turn_around = 0;
-        }
+        } 
 
         public void WriteBack()
         {
